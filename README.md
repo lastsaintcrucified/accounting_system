@@ -20,6 +20,11 @@ This project is a simplified accounting system with two main features:
 
 ---
 
+## ✅ Environment settings
+
+- **DATABASE_URL**:
+  postgres://postgres:[your_password]@localhost:5432/[database_name]
+
 ### 📁 Project Folder Structure
 
 ```bash
