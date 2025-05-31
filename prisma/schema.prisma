@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  type      AccountType
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  entries   JournalEntryLine[]
+
+  @@map("accounts")
+}
+
+model JournalEntry {
+  id        String   @id @default(cuid())
+  date      DateTime
+  memo      String?
+  lines     JournalEntryLine[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("journal_entries")
+}
+
+model JournalEntryLine {
+  id              String       @id @default(cuid())
+  journalEntryId  String
+  accountId       String
+  debit           Float        @default(0)
+  credit          Float        @default(0)
+  journalEntry    JournalEntry @relation(fields: [journalEntryId], references: [id], onDelete: Cascade)
+  account         Account      @relation(fields: [accountId], references: [id])
+
+  @@map("journal_entry_lines")
+}
+
+enum AccountType {
+  ASSET
+  LIABILITY
+  EQUITY
+  EXPENSE
+  REVENUE
+}
