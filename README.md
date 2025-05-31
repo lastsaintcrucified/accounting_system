@@ -20,12 +20,25 @@ This project is a simplified accounting system with two main features:
 
 ---
 
+## ✅ Node modules install
+
+- **NodeModules**:
+
+  ```bash
+  npm install --legacy-peer-deps
+
+  ```
+
+---
+
 ## ✅ Environment settings
 
 - **DATABASE_URL**:
   postgres://postgres:[your_password]@localhost:5432/[database_name]
 
 ### 📁 Project Folder Structure
+
+---
 
 ```bash
 .
