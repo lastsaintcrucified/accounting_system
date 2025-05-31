@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📘 Project Workspace: Minimal Accounting System
 
-## Getting Started
+### 🛠 Tech Stack:
+- **Next.js (App Router)**
+- **Tailwind CSS**
+- **TypeScript**
+- **Prisma**
+- **SQLite/PostgreSQL** (local vs production)
+- **v0.dev** (for UI scaffolding)
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✅ Project Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is a simplified accounting system with two main features:
+- **Chart of Accounts**: Manage different types of accounts
+- **Journal Entry**: Record accounting entries with double-entry validation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Folder Structure Plan
 
-## Learn More
+.
+├── app
+│   ├── accounts
+│   │   ├── page.tsx           # View all accounts
+│   │   ├── new.tsx            # Add account form
+│   │   └── [id]
+│   │       └── edit.tsx       # Edit account
+│   ├── journal
+│   │   ├── page.tsx           # View all journal entries
+│   │   └── new.tsx            # Add new journal entry
+│   └── api
+│       ├── accounts           # API endpoints for accounts
+│       └── journal-entries    # API endpoints for journal entries
+│
+├── components
+│   ├── AccountForm.tsx
+│   ├── JournalEntryForm.tsx
+│   └── JournalLineItem.tsx
+│
+├── prisma
+│   └── schema.prisma
+│
+├── lib
+│   └── validators.ts          # Logic for entry balancing
+│
+├── utils
+│   └── db.ts                  # Prisma client
+│
+└── types
+    └── index.ts              # Shared types/interfaces
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👨‍💻 Team Workflow & Task Assignments
 
-## Deploy on Vercel
+| Task | Description | Assignee |
+|------|-------------|----------|
+| **Setup** | Initialize `Next.js`, Tailwind CSS, Prisma, TypeScript. Use SQLite for local dev. Add project README. | `@junior-dev-A` |
+| **Models** | Define `Account`, `JournalEntry`, and `JournalLine` models in `schema.prisma`. Run migrations and seed sample data. | `@junior-dev-B` |
+| **Chart of Accounts** | Create CRUD API routes and React pages for managing accounts. Use `/app/accounts` structure. | `@junior-dev-A` |
+| **Journal Entry** | Create a form for journal entries with line items. Store entries and lines in DB. Use `/app/journal/new.tsx`. | `@junior-dev-B` |
+| **Validation Logic** | Implement `lib/validators.ts` to ensure total debit === total credit before submission. | `@junior-dev-A` |
+| **UI via v0.dev** | Use [v0.dev](https://v0.dev) to design both Chart of Accounts and Journal Entry forms. Refactor into reusable components in `/components`. | `@junior-dev-B` |
+| **Testing** | Manually test full workflow: account creation/edit/delete, journal entry creation, double-entry validation. | `@junior-dev-A` |
+| **Polish** | Ensure mobile responsiveness, form validation messages, button states (loading, disabled), and error displays. | `@junior-dev-B` |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔗 Helpful Links
+
+- [v0.dev](https://v0.dev) – use for generating clean Tailwind UI components
+- [Prisma Docs](https://www.prisma.io/docs)
+- [Next.js App Router Docs](https://nextjs.org/docs/app/building-your-application/routing)
+
+---
+
+## ✅ Completion Checklist for Dev-A and Dev-B 
+
+- [ ] 🛠 Project initialized with base config (Next.js, Tailwind, TypeScript, Prisma) — **@junior-dev-A**
+- [ ] 🗂 Prisma models defined and DB migrated (`Account`, `JournalEntry`, `JournalLine`) — **@junior-dev-B**
+- [ ] 🧾 Account CRUD (API routes + UI pages) — **@junior-dev-A**
+- [ ] 📥 Journal Entry form + save logic with multiple lines — **@junior-dev-B**
+- [ ] ✅ Entry validation (ensure total debit equals credit) — **@junior-dev-A**
+- [ ] 🎨 UI responsive and user-friendly (via v0.dev + Tailwind polish) — **@junior-dev-B**
+- [ ] 🧪 Basic test cases manually verified for account and journal workflows — **@junior-dev-A**
+
+
+
