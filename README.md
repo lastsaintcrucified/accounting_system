@@ -18,21 +18,22 @@ This project is a simplified accounting system with two main features:
 
 ---
 
-## 📂 Folder Structure Plan
+### 📁 Project Folder Structure
 
+```bash
 .
 ├── app
 │   ├── accounts
-│   │   ├── page.tsx           # View all accounts
-│   │   ├── new.tsx            # Add account form
+│   │   ├── page.tsx              # View all accounts
+│   │   ├── new.tsx               # Add account form
 │   │   └── [id]
-│   │       └── edit.tsx       # Edit account
+│   │       └── edit.tsx          # Edit account
 │   ├── journal
-│   │   ├── page.tsx           # View all journal entries
-│   │   └── new.tsx            # Add new journal entry
+│   │   ├── page.tsx              # View all journal entries
+│   │   └── new.tsx               # Add new journal entry
 │   └── api
-│       ├── accounts           # API endpoints for accounts
-│       └── journal-entries    # API endpoints for journal entries
+│       ├── accounts              # API endpoints for accounts
+│       └── journal-entries       # API endpoints for journal entries
 │
 ├── components
 │   ├── AccountForm.tsx
@@ -43,13 +44,15 @@ This project is a simplified accounting system with two main features:
 │   └── schema.prisma
 │
 ├── lib
-│   └── validators.ts          # Logic for entry balancing
+│   └── validators.ts             # Logic for entry balancing
 │
 ├── utils
-│   └── db.ts                  # Prisma client
+│   └── db.ts                     # Prisma client
 │
 └── types
-    └── index.ts              # Shared types/interfaces
+    └── index.ts                  # Shared types/interfaces
+```
+
 
 
 ---
