@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
@@ -33,22 +34,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-
-interface Account {
-	id: string;
-	name: string;
-	type: "ASSET" | "LIABILITY" | "EQUITY" | "EXPENSE" | "REVENUE";
-	createdAt: string;
-	updatedAt: string;
-}
-
-const accountTypeColors = {
-	ASSET: "bg-green-100 text-green-800",
-	LIABILITY: "bg-red-100 text-red-800",
-	EQUITY: "bg-blue-100 text-blue-800",
-	EXPENSE: "bg-orange-100 text-orange-800",
-	REVENUE: "bg-purple-100 text-purple-800",
-};
+import { Account, accountTypeColors } from "@/lib/dataType";
+import { fetchData } from "@/lib/actions";
 
 export default function AccountsPage() {
 	const [accounts, setAccounts] = useState<Account[]>([]);
@@ -64,8 +51,7 @@ export default function AccountsPage() {
 
 	const fetchAccounts = async () => {
 		try {
-			const response = await fetch("/api/accounts");
-			const data = await response.json();
+			const data = await fetchData("/api/accounts");
 			setAccounts(data);
 		} catch (error: any) {
 			toast({

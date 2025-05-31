@@ -4,11 +4,12 @@ import { prisma } from "@/lib/prisma";
 
 export async function DELETE(
 	request: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
+	const { id } = await params;
 	try {
 		await prisma.account.delete({
-			where: { id: params.id },
+			where: { id },
 		});
 		return NextResponse.json({ success: true });
 	} catch (error: any) {
@@ -21,13 +22,14 @@ export async function DELETE(
 
 export async function PUT(
 	request: NextRequest,
-	{ params }: { params: { id: string } }
+	{ params }: { params: Promise<{ id: string }> }
 ) {
+	const { id } = await params;
 	try {
 		const { name, type } = await request.json();
 
 		const account = await prisma.account.update({
-			where: { id: params.id },
+			where: { id },
 			data: { name, type },
 		});
 

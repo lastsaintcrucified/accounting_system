@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { Plus, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { fetchData } from "@/lib/actions";
 
 interface Account {
 	id: string;
@@ -50,8 +52,7 @@ export default function JournalEntriesPage() {
 
 	const fetchAccounts = async () => {
 		try {
-			const response = await fetch("/api/accounts");
-			const data = await response.json();
+			const data = await fetchData("/api/accounts");
 			setAccounts(data);
 		} catch (error: any) {
 			toast({
